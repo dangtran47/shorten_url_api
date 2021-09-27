@@ -1,0 +1,11 @@
+version: '3.1'
+
+services:
+  db:
+    image: postgres:alpine
+    environment:
+      POSTGRES_DB: shorten_url
+      POSTGRES_USER: postgres_user
+      POSTGRES_PASSWORD: postgres_password
+    ports:
+      - "5433:5432"
