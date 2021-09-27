@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :map_urls, constraints: {id: /[^\/]+/}, only: [:show, :create]
+  resources :map_urls, constraints: { id: /[^\/]+/ }, only: [:show, :create]
+  mount VersioningGrape::API => '/api'
 end
