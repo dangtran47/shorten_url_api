@@ -4,6 +4,8 @@ module VersioningGrape
       version "v1", using: :path, vendor: 'versioning-grape'
       format :json
       mount BaseAPI
+      mount MapUrls
+      mount Users::Registration
 
       resource :test_v1 do
         desc 'test api v1'
