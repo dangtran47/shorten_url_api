@@ -5,7 +5,7 @@ class MapUrlsController < ActionController::Base
   def show
     @map_url = MapUrl.find_by(shorten_url: params[:id])
     if @map_url
-      render json: @map_url
+      render json: { data: @map_url }
     else
       render json: {}
     end
