@@ -1,7 +1,19 @@
 require 'faker'
 
-class MapUrlsController < ActionController::Base
-  skip_before_action :verify_authenticity_token
+class MapUrlsController < ApplicationController
+  # skip_before_action :verify_authenticity_token
+
+  def index
+    puts 'user here'
+    puts current_user
+    @map_url = MapUrl.all
+    if @map_url
+      render json: { data: @map_url }
+    else
+      render json: {}
+    end
+  end
+
   def show
     @map_url = MapUrl.find_by(shorten_url: params[:id])
     if @map_url
