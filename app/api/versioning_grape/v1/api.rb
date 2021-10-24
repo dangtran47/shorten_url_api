@@ -6,6 +6,7 @@ module VersioningGrape
       mount BaseAPI
       mount MapUrls
       mount Users::Registration
+      mount Users::SignIn
 
       resource :test_v1 do
         desc 'test api v1'

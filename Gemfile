@@ -63,3 +63,7 @@ gem 'grape'
 gem 'rexml'
 
 gem 'rack-cors', require: 'rack/cors'
+
+gem 'devise'
+
+gem 'jwt'
