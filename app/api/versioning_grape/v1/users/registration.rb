@@ -22,7 +22,12 @@ module VersioningGrape
                 }
               }
             else
-              error!({ errors: service.errors }, 422)
+              error!(
+                {
+                       errors: {
+                         message: service.errors.values.flatten.join('\n')
+                       }
+                     }, 422)
             end
           end
         end
