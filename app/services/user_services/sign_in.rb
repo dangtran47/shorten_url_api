@@ -23,7 +23,7 @@ module UserServices
     end
 
     def generate_jwt
-      @user.generate_jwt.to_json
+      @user.generate_jwt
     end
 
     def success?

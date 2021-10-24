@@ -4,13 +4,10 @@ class MapUrlsController < ApplicationController
   # skip_before_action :verify_authenticity_token
 
   def index
-    puts 'user here'
-    puts current_user
-    @map_url = MapUrl.all
-    if @map_url
-      render json: { data: @map_url }
+    if current_user
+      render json: { data: current_user.map_urls }
     else
-      render json: {}
+      render json: { data: [] }
     end
   end
 
@@ -33,7 +30,7 @@ class MapUrlsController < ApplicationController
         shorten_url = format(I18n.t('s_s'), origin, Faker::Alphanumeric.alphanumeric(number: 10))
         next if MapUrl.find_by(shorten_url: shorten_url)
 
-        map_url = MapUrl.create({ shorten_url: shorten_url, original_url: original_url })
+        map_url = MapUrl.create({ shorten_url: shorten_url, original_url: original_url, user_id: @current_user_id })
         render json: { data: { shorten_url: map_url.shorten_url } }
         break
       end

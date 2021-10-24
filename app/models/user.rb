@@ -3,6 +3,8 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }
   validates :password, length: { minimum: 5, allow_nil: true }
 
+  has_many :map_urls
+
   attr_reader :password
 
   before_save { self.email = email.downcase }
@@ -22,6 +24,6 @@ class User < ApplicationRecord
   end
 
   def generate_jwt
-    JWT.encode({id: id, exp: 60.days.from_now.to_i}, Rails.application.secrets.secret_key_base)
+    JWT.encode({ id: id, exp: 60.days.from_now.to_i }, Rails.application.secrets.secret_key_base)
   end
 end
