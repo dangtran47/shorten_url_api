@@ -37,7 +37,7 @@ class MapUrlsController < ApplicationController
 
     else
       user_shorten_url = format(I18n.t('s_s'), origin, shorten_name)
-      map_url = MapUrl.find_or_initialize_by(shorten_url: user_shorten_url) do |m|
+      map_url = MapUrl.find_or_initialize_by(shorten_url: user_shorten_url, user_id: @current_user_id) do |m|
         m.original_url = original_url
       end
 
