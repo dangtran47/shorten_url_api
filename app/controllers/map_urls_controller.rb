@@ -41,8 +41,7 @@ class MapUrlsController < ApplicationController
         m.original_url = original_url
       end
 
-      if map_url.new_record?
-        map_url.save
+      if map_url.new_record? && map_url.save
         render json: { data: { shorten_url: map_url.shorten_url } }
       else
         render json: { errors: { message: 'Shorten URL has already been existed.' } }, status: :bad_request
