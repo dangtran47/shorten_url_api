@@ -17,3 +17,13 @@ test:
   host: <%= ENV["DATABASE_HOST"] || 'localhost' %>
   username: <%= ENV["DATABASE_USR"] %>
   password: <%= ENV["DATABASE_PWD"] %>
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  port: <%= ENV["DATABASE_PORT"] || '5432' %>
+  host: <%= ENV["DATABASE_HOST"] || 'localhost' %>
+  database: <%= ENV["DATABASE_NAME"] || "shorten_url_dev" %>
+  pool: 15
+  username: <%= ENV["DATABASE_USR"] %>
+  password: <%= ENV["DATABASE_PWD"] %>
