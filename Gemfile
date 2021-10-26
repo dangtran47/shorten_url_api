@@ -67,3 +67,5 @@ gem 'rack-cors', require: 'rack/cors'
 gem 'devise'
 
 gem 'jwt'
+
+gem 'rack-attack'
